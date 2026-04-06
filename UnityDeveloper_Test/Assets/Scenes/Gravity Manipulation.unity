@@ -1003,7 +1003,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.22, y: 2.46, z: -3}
+  m_LocalPosition: {x: 0.93, y: 2.46, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2285,7 +2285,7 @@ Transform:
   m_GameObject: {fileID: 621241055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.22, y: 2.46, z: -3}
+  m_LocalPosition: {x: 0.93, y: 2.46, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2314,8 +2314,8 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 1
     IgnoreTag: 
-    CameraRadius: 0.2
-    DampingIntoCollision: 0
+    CameraRadius: 0.001
+    DampingIntoCollision: 1
     DampingFromCollision: 0.5
 --- !u!1 &624014555
 GameObject:
@@ -7415,10 +7415,20 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 3597057396876152813, guid: 05d7176e337409a43812790c450b54a7,
+        type: 3}
+      propertyPath: verticalMaxClamp
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597057396876152813, guid: 05d7176e337409a43812790c450b54a7,
+        type: 3}
+      propertyPath: verticalMinClamp
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 4866287552072320189, guid: 05d7176e337409a43812790c450b54a7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.22
+      value: 0.93
       objectReference: {fileID: 0}
     - target: {fileID: 4866287552072320189, guid: 05d7176e337409a43812790c450b54a7,
         type: 3}
@@ -7467,13 +7477,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5127438262924209211, guid: 05d7176e337409a43812790c450b54a7,
         type: 3}
-      propertyPath: camera
+      propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 621241058}
     - target: {fileID: 8816179993837289342, guid: 05d7176e337409a43812790c450b54a7,
         type: 3}
       propertyPath: m_Name
       value: 'Player '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896593547492356963, guid: 05d7176e337409a43812790c450b54a7,
+        type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 621241058}
+    - target: {fileID: 8896593547492356963, guid: 05d7176e337409a43812790c450b54a7,
+        type: 3}
+      propertyPath: gravityStrength
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
