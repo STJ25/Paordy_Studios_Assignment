@@ -18,6 +18,11 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.2f;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Animation Settings")]
+    [SerializeField] private Animator animator;
+    private static readonly int SpeedHash = Animator.StringToHash("Speed");
+    private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
+
     private Rigidbody rb;
     private PlayerInput playerInput;
 
@@ -100,6 +105,7 @@ public class ThirdPersonController : MonoBehaviour
         Movement();
         Rotation();
         Jump();
+        UpdateAnimation();
     }
 
     private void GroundCheck()
@@ -151,13 +157,21 @@ public class ThirdPersonController : MonoBehaviour
     private void Jump()
     {
         if (!jumpInput) return;
-        jumpInput = false; // Always clear first to prevent jump getting "stuck"
+        jumpInput = false; // Player getting stuck without this
 
         if (isGrounded)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    private void UpdateAnimation()
+    {
+        float horizontalSpeed = new Vector3(rb.linearVelocity.x,0f,rb.linearVelocity.z).magnitude;
+        float normalizeSpeed = Mathf.Clamp01(horizontalSpeed/moveSpeed);
+        animator.SetFloat(SpeedHash, normalizeSpeed,0.1f, Time.fixedDeltaTime);
+        animator.SetBool(IsGroundedHash, isGrounded);
     }
 
     private void OnDrawGizmosSelected()

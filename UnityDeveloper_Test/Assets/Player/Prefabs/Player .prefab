@@ -205,6 +205,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
+  animator: {fileID: 9103185492975069403}
 --- !u!114 &8903818621842762067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,6 +1008,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3674939390017838693}
+  - component: {fileID: 9103185492975069403}
   m_Layer: 0
   m_Name: Exo Gray
   m_TagString: Untagged
@@ -1038,6 +1040,28 @@ Transform:
   - {fileID: 5596991227880805109}
   m_Father: {fileID: 4302489903846185822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &9103185492975069403
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718077869932966358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ed90e1a4d04c24048b63faeb908d56c1, type: 3}
+  m_Controller: {fileID: 9100000, guid: b3540c86fc7266c4881f9b6c5aa74f46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1740843998348902962
 GameObject:
   m_ObjectHideFlags: 0
