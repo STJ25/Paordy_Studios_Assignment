@@ -2,24 +2,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+/// <summary>
+/// This Manager Listens to CollectionManager events and updates the UI accordingly.
+/// No game logic lives here — purely responsible for display.
+/// </summary>
+
+// Attach this component to a dedicated empty GameObject in the scene.
+// Do not attach alongside other managers to keep responsibilities separate.
+
 public class UIManager : MonoBehaviour
 {
     [Header("Score UI")]
-    public TextMeshProUGUI collectedText;
-    public TextMeshProUGUI remainingText;
+    [SerializeField] private TextMeshProUGUI collectedText;
+    [SerializeField] private TextMeshProUGUI remainingText;
 
     [Header("Timer UI")]
-    public TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText;
 
     [Header("Start Panel")]
-    public CanvasGroup startPanelCanvasGroup;
+    [SerializeField] private CanvasGroup startPanelCanvasGroup;
 
     [Header("End Panel")]
-    public CanvasGroup endPanelCanvasGroup;
-    public TextMeshProUGUI endPanelText;
+    [SerializeField] private CanvasGroup endPanelCanvasGroup;
+    [SerializeField] private TextMeshProUGUI endPanelText;
 
     [Header("Data")]
-    public CollectibleData collectibleData;
+    [SerializeField] private CollectibleData collectibleData;
 
     private void OnEnable()
     {
@@ -39,9 +47,15 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        if (collectibleData == null)
+        {
+            Debug.LogError("UIManager has no CollectibleData assigned.", this);
+            return;
+        }
+
         collectedText.text = $"0";
-        remainingText.text = $"{collectibleData.goalAmount}";
-        timerText.text     = $"Time : {collectibleData.timeLimit:F1}";
+        remainingText.text = $"{collectibleData.GoalAmount}";
+        timerText.text     = $"Time : {collectibleData.TimeLimit:F1}";
 
         SetPanel(startPanelCanvasGroup, true);
         SetPanel(endPanelCanvasGroup,   false);
@@ -66,23 +80,27 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    // Updates Collected and remaining count Display
     private void UpdateScoreUI(int currentCount)
     {
-        int remaining      = Mathf.Max(0, collectibleData.goalAmount - currentCount);
+        //In UpdateScore UI
+        int remaining = Mathf.Max(0, collectibleData.GoalAmount - currentCount);
         collectedText.text = $"{currentCount}";
         remainingText.text = $"{remaining}";
     }
 
+    // Updates the Countdown timer display each frame
     private void UpdateTimerUI(float remainingTime)
     {
         timerText.text = $"Time : {Mathf.Max(0, remainingTime):F1}";
     }
-
+    // Shows You win on goal completed
     private void HandleGoalReached()
     {
         ShowEndPanel("You Win!");
     }
 
+    // Shows Time's up when we are unable to achieve the goal in the time limit
     private void HandleTimeExpired()
     {
         ShowEndPanel("Time's Up!");

@@ -1,17 +1,26 @@
 using UnityEngine;
 
+/// <summary>
+/// This is a ScriptableObject that defines a collectible item's properties.
+/// Create new item types via Assets → Create → Collection System → Collectible Data.
+/// No code changes needed to add new collectible types.
+/// </summary>
+
 [CreateAssetMenu(fileName = "CollectibleData", menuName = "Collection System/Collectible Data")]
 public class CollectibleData : ScriptableObject
 {
     [Header("Identity")]
-    public string itemName = "Coin";
-    public int pointValue = 1;
+    [SerializeField] private string itemName = "Coin";
+    [SerializeField] private int pointValue = 1;
 
     [Header("Goal Settings")]
-    public int goalAmount = 10;
-    public float timeLimit = 30f;
+    [SerializeField] private int goalAmount = 10;
+    [SerializeField] private float timeLimit = 30f;
 
-    // [Header("Feedback")] //
-    // public GameObject collectVFXPrefab;
-    // public AudioClip collectSFX;
+    // Public getters — read only access for other scripts
+    public string ItemName => itemName;
+    public int PointValue => pointValue;
+    public int GoalAmount => goalAmount;
+    public float TimeLimit => timeLimit;
+
 }
