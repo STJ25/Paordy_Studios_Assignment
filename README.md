@@ -5,7 +5,7 @@
 
 ### **Sushant Jadhav** 
 Game Developer | Unity Developer | Game Designer  
-This repository contains my submission for the Parody Studios game assignment. The project is developed using **Unity** and focuses on implementing modular, scalable gameplay systems with clean architecture and industry-standard coding practices.
+This repository contains my submission for the Parody Studios game assignment. The project is developed using **Unity** version 6.0.58 LTS and focuses on implementing modular, scalable gameplay systems with clean architecture and industry-standard coding practices.
 
 ---
 
